@@ -6,20 +6,22 @@ import "./App.css";
 function App() {
   const [count, setCount] = useState(0);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
+  const [classStyle, setClassStyle] = useState<String>("");
 
   /* useEffect(() => {
     textareaRef.current?.focus();
   }, []); */
 
+
   useEffect(() => {
     const timer = setTimeout(() => {
       console.log("Focus fired");
-      textareaRef.current?.style.setProperty("border", "2px solid white");
+      setClassStyle("focused");
     }, 1000);
 
     textareaRef.current?.addEventListener("click", () => {
       console.log("Click fired");
-      textareaRef.current?.style.setProperty("border", "none");
+      setClassStyle("");
     });
   }, []);
 
@@ -31,7 +33,7 @@ function App() {
     <>
       <textarea
         ref={textareaRef}
-        className="card"
+        className={`card ${classStyle}`}
         style={{
           width: "100%",
           height: "200px",
