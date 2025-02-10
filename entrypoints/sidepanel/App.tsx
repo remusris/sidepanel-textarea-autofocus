@@ -31,7 +31,6 @@ function App() {
     <>
       <textarea
         ref={textareaRef}
-        autoFocus={true}
         className="card"
         style={{
           width: "100%",
