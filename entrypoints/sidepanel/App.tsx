@@ -13,10 +13,14 @@ function App() {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      textareaRef.current?.focus();
-    }, 100); // 100ms delay
+      console.log("Focus fired");
+      textareaRef.current?.style.setProperty("border", "2px solid white");
+    }, 1000);
 
-    return () => clearTimeout(timer); // Cleanup timeout on unmount
+    textareaRef.current?.addEventListener("click", () => {
+      console.log("Click fired");
+      textareaRef.current?.style.setProperty("border", "none");
+    });
   }, []);
 
   const handleFocus = () => {
